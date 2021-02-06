@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>Exercise 5.2 - The Proxy Pattern</title>
+
+<!-- jQuery reference-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+        <!--Navbar-->
+       <nav class="navbar navbar-dark bg-dark">
+       <a href="#" class="navbar brand">Home</a>
+    </nav>
+    <br /><br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h2>Exercise 5.2 - The Proxy Pattern</h2>
+                 <!--Button to display message-->
+                <button class="btn btn-primary" id="btnPreviewProxy">Preview Proxy</button>
+                <br />
+                <span id="spanProxyResults"></span>
+            </div>
+        </div>
+    </div>
+        <script>
+            //function that handles proxy
+            $(function(){
+                var car ={
+                    make: "Honda",
+                    model: "Accord",
+                    //Writes the result of the span tag
+                    display: function(){
+                        //Clears the span tag before new content is added
+                        $("#spanProxyResults").html("");
+                        //Fills in span tag with values
+                        $("#spanProxyResults").append("<br />Make: " + this.make + "<br />" + "Model: " + this.model);
+                    }
+                };
+//Click event
+                $("#btnPreviewProxy").click($.proxy(car, "display"))
+
+            });
+
+        </script>
+    </body>
+</html>
