@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8">
+    <title>Group Project- HufflePuff</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <head>
+        <!--Content Starts Here-->
+        <body>
+            <section class="header">
+              <a href="#headlog"><img id="logo" src="images/Clearance Process Overview Graphic-07.png" width="450" height="300"></a> <h1>HUFFLEPUFF QUIZ SITE</h1> 
+<!--scroll down button-->
+              <a href="#" class="scroll-down" address="true"></a>
+            </section>
+
+
+            <div class="about"></div>
+
+            <div class="quiz">
+                <h2>O.W.L (Ordinary Wizarding Level) Exams Questions</h2>
+                <p>Take this quiz and test your knowledge on Javascript and gage your ability to become great Coding Wizard! </p>
+
+<!--Question Section-->
+                <ol class="questions">
+
+<!--Question 1-->
+                    <li>
+                        <h2>What kind of database is MongoDB?</h2> 
+
+                        <ul>
+                            <li id="click">Relational</li>
+                            <li id="click">Non-Relational</li>
+                            <li id="click">Static</li>
+                            <li id="click">Magical</li>
+                        </ul>
+                    </li>
+
+<!--Question 2-->
+                    <li>
+                        <h2>How do you start writing a FOR loop?</h2> 
+
+                        <ul>
+                            <li id="click">for (j=0, j < array.length, j --)</li>
+                            <li id="click">for (j = 0, j < 0, j ++)</li>
+                            <li id="click">for (j =0, j < array.length, j ++)</li>
+                            <li id="click">for j = 0, j < array.length, j++ </li>
+                        </ul>
+                    </li>
+<!--Question 3-->
+                    <li>
+                        <h2>What does a break; do?</h2> 
+
+                        <ul>
+                            <li id="click">It breaks your computer</li>
+                            <li id="click">It causes a loop or switch to exit</li>
+                            <li id="click">It breaks the function call</li>
+                            <li id="click">It breaks itself</li>
+                        </ul>
+                    </li>
+
+<!--Question 4-->
+<li>
+                        <h2>What does MVVM stand for?</h2> 
+
+                        <ul>
+                            <li id="click">Model View ViewModel</li>
+                            <li id="click">Model Viewing ViewModel</li>
+                            <li id="click">Magical View Versus Muggles</li>
+                            <li id="click">Must View Variety Masks</li>
+                        </ul>
+                    </li>
+<!--Question 5-->
+<li>
+                        <h2>Which of the following is a pattern that keeps track of changes in code and alerts you?
+                        </h2> 
+
+                        <ul>
+                            <li id="click">The Owl Watcher</li>
+                            <li id="click">The Singleton</li>
+                            <li id="click">The Iterator</li>
+                            <li id="click">The Observer</li>
+                        </ul>
+                    </li>
+<!--Question 6-->
+<li>
+                        <h2>Which of the following word is a JavaScript reserved word in strict mode?
+                        </h2> 
+
+                        <ul>
+                            <li id="click">let</li>
+                            <li id="click">function</li>
+                            <li id="click">during</li>
+                            <li id="click">for</li>
+                        </ul>
+                    </li>
+<!--Question 7-->
+<li>
+                        <h2>What tag should you use to add JavaScript in a HTML document?
+                        </h2> 
+
+                        <ul>
+                            <li id="click"> <%JavaScript></li>
+                            <li id="click"> <%js></li>
+                            <li id="click"> <%script></li>
+                            <li id="click"> <%Java></li>
+                        </ul>
+                    </li>
+
+<!--Question 8-->
+<li>
+                        <h2>Which is the correct JS array format?
+                        </h2> 
+
+                        <ul>
+                            <li id="click"> var myArr = (thingOne, thingTwo)</li>
+                            <li id="click">var myArr = [array1, array2, array3</li>
+                            <li id="click">var myWand = [wand1, wand2, wand3]</li>
+                            <li id="click">var myPets = [“Hedwig”, “Crookshanks”, “Pig”]</li>
+                        </ul>
+                    </li>
+<!--Question 9-->
+<li>
+                        <h2>What kind of programing language is JavaScript?
+                        </h2> 
+
+                        <ul>
+                            <li id="click">Server</li>
+                            <li id="click">Client</li>
+                            <li id="click"> Database</li>
+                            <li id="click">Magical</li>
+                        </ul>
+                    </li>
+
+<!--Question 10-->
+<li>
+                        <h2>Which is the correct format to change JavaScript syntax to HTML?<br><b><%p  class = “quiz”>This is end of the quiz</%p></b>
+                        </h2> 
+
+                        <ul>
+                            <li id="click">document.getElementById(“quiz”).innerHTML=“I am done!”;</li>
+                            <li id="click">document.getElementByClassName(“quiz”).innerHTML=“I am done!”;</li>
+                            <li id="click">document.getElementsByClassName(“quiz”).innerHTML=”I am done!”;</li>
+                            <li id="click">document.getElementByClass(“quiz”).innerHTML=“I am done!”;</li>
+                        </ul>
+                    </li>
+
+
+
+
+                </ol>
+            </div>
+
+
+
+            </div>
+
+<div class="sbmt">
+    <button class="button"><span>Submit</span></button>
+</div>
+            
+<script> 
+$(function() {
+    $('.scroll-down').click (function() {
+      $('html, body').animate({scrollTop: $('section.ok').offset().top }, 'slow');
+      return false;
+    });
+  });
+            </script>
+        </body>
+    </head>
+</html>
