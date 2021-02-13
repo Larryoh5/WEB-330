@@ -10,23 +10,23 @@
         <!--Content Starts Here-->
         <body>
             <section class="header">
-              <a href="#headlog"><img id="logo" src="images/Clearance Process Overview Graphic-07.png" width="450" height="300"></a> <h1>HUFFLEPUFF QUIZ SITE</h1> 
-<!--scroll down button-->
-              <a href="#" class="scroll-down" address="true"></a>
+              <a href="#headlog"><img id="logo" src="images/Clearance Process Overview Graphic-07.png" width="400" height="350"></a> <h1>HUFFLEPUFF QUIZ SITE</h1> 
+             <p> <b>O.W.L (Ordinary Wizarding Level) EXAM QUESTIONS</b><br>
+                Take this quiz and test your knowledge on Javascript and gage your ability to become a great Coding Wizard! </p>
             </section>
+<!--scroll down button-->
+ <a  href="#section2" class="scroll-down" address="true"></a>
+             
+           
 
 
-            <div class="about"></div>
+  <!--Question Section-->      
 
-            <div class="quiz">
-                <h2>O.W.L (Ordinary Wizarding Level) Exams Questions</h2>
-                <p>Take this quiz and test your knowledge on Javascript and gage your ability to become great Coding Wizard! </p>
-
-<!--Question Section-->
-                <ol class="questions">
+  <section>
+                <ol class="questions" >
 
 <!--Question 1-->
-                    <li>
+                    <li id="section2" >
                         <h2>What kind of database is MongoDB?</h2> 
 
                         <ul>
@@ -145,29 +145,17 @@
                             <li id="click">document.getElementByClass(“quiz”).innerHTML=“I am done!”;</li>
                         </ul>
                     </li>
-
-
-
-
                 </ol>
-            </div>
+            </section>
+        
 
-
-
-            </div>
 
 <div class="sbmt">
     <button class="button"><span>Submit</span></button>
 </div>
             
-<script> 
-$(function() {
-    $('.scroll-down').click (function() {
-      $('html, body').animate({scrollTop: $('section.ok').offset().top }, 'slow');
-      return false;
-    });
-  });
-            </script>
+<script src="index.js"> </script>
+
         </body>
     </head>
 </html>

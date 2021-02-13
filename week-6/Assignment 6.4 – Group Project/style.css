@@ -1,9 +1,10 @@
  /* Sets entire sites font*/
 
 html{
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     color: rgb(150, 150, 150);
+    scroll-behavior: smooth;
 }
 
     /* This is the Title under logo and includes fade in*/
@@ -17,6 +18,9 @@ html{
     animation-fill-mode: forwards; 
         }
 
+section.p{
+    line-height: -2.6;
+}
 
   /* This is the HufflePuff logo's fade in */      
 img {
@@ -53,11 +57,7 @@ body {
   }
 
   /*Scroll down button*/
-  .scroll-down {
-    opacity: 1;
-    -webkit-transition: all .5s ease-in 3s;
-    transition: all .5s ease-in 3s;
-  }
+  
   
   .scroll-down {
     position: absolute;
@@ -114,12 +114,16 @@ body {
 
   /* Button configuration */
  
-  *,
+  
 :after,
 :before {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.sbmt{
+    padding-top: 70px;
 }
   .button {
     display: inline-block;
