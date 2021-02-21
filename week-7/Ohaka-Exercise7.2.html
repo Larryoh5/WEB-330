@@ -1,0 +1,61 @@
+<!--============================================
+; Title: Exercise 7.2-The "if" Binding
+; Author: Professor Krasso
+; Date: 21 Feb 2021
+; Modified by: Larry Ohaka
+;===========================================-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta  name="viewport" content="width=device-width"/>
+    <title>Knockout "if" Binding</title>
+    <!-- Stylesheet - Bootstrap -->
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    
+  </head>
+  <body>
+    <script src="../knockout-3.5.1.js"></script>
+    <div role="main" class="container">
+        <br/><br/>
+        <h2>Example 2</h2>
+        <div class="form-group">
+        <label for="txtName">First Name: </label>
+        <input type="text" data-bind="value: name" class="form-control" id="txtName"/>
+        </div>
+        <div data-bind="if: displayName">
+        <div class="form-group">
+        <label for="txtAuthor">Last Name: </label>
+        <input type="text" data-bind="value: author" class="form-control"
+       id="txtAuthor"/>
+        </div>
+        </div>
+        <br/>
+        <div data-bind="if: author">
+        <h2><span id="bookOutput" class="alert-success" data-bind="text:
+       displayBook"></span></h2>
+        </div>
+        <br/>
+       </div>
+       <!--Script-->
+       <script>
+        function PersonViewModel() {
+
+        this.firstName = ko.observable("");
+        this.lastName = ko.observable("");
+
+        this.displayName = ko.pureComputed(function () {
+        return this.firstName();
+        }, this);
+
+        this.fullName = ko.pureComputed(function () {
+        return this.firstName() + " by " + this.lastName();
+        }, this);
+        }
+        ko.applyBindings(new PersonViewModel());
+       </script>
+  </body>
+  </html>

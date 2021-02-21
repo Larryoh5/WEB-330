@@ -1,0 +1,108 @@
+<!--============================================
+; Title: Exercise 7.4-Other Binding
+; Author: Professor Krasso
+; Date: 21 Feb 2021
+; Modified by: Larry Ohaka
+;===========================================-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta  name="viewport" content="width=device-width"/>
+    <title>Other Binding</title>
+    <!-- Stylesheet - Bootstrap -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    
+  </head>
+  <body>
+    <script src="../knockout-3.5.1.js"></script>
+      <!--Menu-->
+      <nav>
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+        </ul>
+      </nav>
+
+    <div role="main" class="container">
+        <br /><br />
+        <h2>JavaScript Tutorials</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          
+          <tbody data-bind="foreach: tutorials">
+            <tr>
+              <td data-bind="text: title"></td>
+              <td data-bind="text: description"></td>
+              <td>
+                <a
+                  data-bind="text: URL, attr: { href:URL }, style:{color:'red'}"
+                  target="_blank"
+                ></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+      </div>
+
+      <!--Script-->
+      <script>
+        // View Model
+        function TutorialViewModel() {
+          this.tutorials = ko.observable([
+            // Websites with URL, title, and description
+            {
+              title: "The Modern Javascript Tutorial",
+              description: "How it's done now. From the basics to advanced topics with simple, but detailed explanations.",
+              URL: ko.observable("https://javascript.info/"),
+            },
+            {
+              title: "Learn Javascript: Simply Easy Learning",
+              description: "JavaScript is very easy to implement because it is integrated with HTML. It is open and cross-platform.",
+              URL: ko.observable(
+                "https://www.tutorialspoint.com/javascript/index.htm"
+              ),
+            },
+            {
+              title: "JavaScript Basics",
+              description:
+                "Getting Started with the Web",
+              URL: ko.observable("https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics"),
+            },
+            {
+              title: "The Best Javascript Tutorials",
+              description:
+                "JavaScript is the most widely used scripting language on Earth. And it has the largest library ecosystem of any programming language.",
+              URL: ko.observable(
+                "https://www.freecodecamp.org/news/best-javascript-tutorial/"
+              ),
+            },
+            {
+              title: "JavaScript Tutorial",
+              description: "JavaScript is the most popular client-side scripting language.",
+              URL: ko.observable("https://www.tutorialrepublic.com/javascript-tutorial/"),
+            },
+          ]);
+        }
+        ko.applyBindings(new TutorialViewModel());
+      </script>
+  </body>
+  </html>
