@@ -1,0 +1,262 @@
+<!--============================================
+; Title: Assignment 8.4-CRUD
+; Author: Professor Krasso
+; Date: 27 Feb 2021
+; Modified by: Larry Ohaka
+;===========================================-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta  name="viewport" content="width=device-width"/>
+    <title>CRUD Operations</title>
+    <!-- Stylesheet - Bootstrap -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    
+  </head>
+  
+    <script src="../knockout-3.5.1.js"></script>
+      <!--Menu-->
+      <nav>
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+        </ul>
+      </nav>
+<!--CRUD-->
+
+<div role="main" class="container">
+    <br /><br />
+    <h2>CRUD</h2>
+    <br />
+    <div class="row" data-bind="if:error">
+      <div class="col-sm-12">
+        <div class="alert alert-danger" role="alert">
+          <strong>Warning!</strong> <span data-bind="text: error()"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <div
+          class="card card-inverse"
+          style="
+            background-color: #333333;
+            border-color: #333333;
+            color: white;
+          "
+        >
+          <div class="card-block p-3">
+            <h3 class="card-title">Employee List</h3>
+            <div class="row">
+              <div class="col-sm-12">
+                <div
+                  class="card card-inverse"
+                  style="
+                    background-color: #333333;
+                    border-color: #333333;
+                    color: white;
+                  "
+                >
+                  <div class="card-block p-3">
+                    <div class="card-text">
+                      <div class="form-group row">
+                        <label for="txtName" class="col-3 col-form-label"
+                          >Name:</label
+                        >
+                        <div class="col-5">
+                          <!-- Add employee -->
+                          <input
+                            type="text"
+                            data-bind="value: nameToAdd, valueupdate: 'afterkeydown'"
+                            class="form-control"
+                            id="txtName"
+                          />
+                        </div>
+                        <div class="col-4">
+                          <a
+                            href="#"
+                            data-bind="click: $root.add"
+                            class="btn btn-primary"
+                            >Add</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-text">
+              <table class="table table-dark table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>EmployeeID</th>
+                    <th>Name</th>
+                    <th>Functions</th>
+                  </tr>
+                </thead>
+                <tbody data-bind="foreach: Employees">
+                  <tr>
+                    <td data-bind="text: Id"></td>
+                    <td data-bind="text: Name"></td>
+                    <td>
+                      <span>
+                        <a
+                          href="#"
+                          class="btn btn-success"
+                          data-bind="click: $root.edit"
+                        >
+                          <i class="fa fa-pencil fa-lg"></i>EDIT
+                        </a>
+                      </span>
+                      |
+                      <span>
+                        <a
+                          href="#"
+                          class="btn btn-danger"
+                          data-bind="click: $root.remove"
+                        >
+                          <i class="fa fa-trash-o fa-lg"></i> DELETE
+                        </a>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4" data-bind="if: Employee">
+        <div
+          class="card card-inverse"
+          style="
+            background-color: #262626;
+            border-color: #313132;
+            color: white;
+          "
+        >
+          <div class="card-block p-3">
+            <h3 class="card-title">Employee</h3>
+            <div class="card-text">
+              <div class="form-group">
+                <label for="txtName">Name:</label>
+                <input
+                  type="text"
+                  id="txtName"
+                  data-bind="value: Employee().Name"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group float-right">
+                <button
+                  data-bind="click:$root.cancel"
+                  class="btn btn-group btn-danger"
+                >
+                  Cancel
+                </button>
+                <button
+                  data-bind="click: $root.update"
+                  class="btn btn-group btn-success"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+  </div>
+
+
+
+      <!--Javascript-->
+      <script>
+          function Employee(id, name) {
+        this.Id = id; 
+        this.Name = name; 
+      }
+
+    
+      var employeeList = [
+      new Employee(1, "Dan"),
+ new Employee(2, "Ari"),
+ new Employee(3, "Cory"),
+ new Employee(4, "Kim"),
+ new Employee(5, "Daniella")
+      ];
+
+     
+      function PayrollViewModel() {
+        var self = this;
+
+        self.nameToAdd = ko.observable("");
+
+        self.error = ko.observable("");
+
+        self.Id = ko.observable(""); 
+
+        self.Name = ko.observable(""); 
+
+        var Employee = {
+          Id: self.Id,
+          Name: self.Name,
+        };
+
+        self.Employee = ko.observable(); 
+        self.Employees = ko.observableArray(employeeList);
+
+       
+        self.add = function () {
+     
+          if (
+            self.nameToAdd() !== "" &&
+            self.Employees.indexOf(self.nameToAdd()) < 0
+          ) {
+            self.error("");
+          
+            let incrementID = self.Employees().length + 1;
+            self.Employees.push(new employee(incrementID, self.nameToAdd()));
+          } else {
+            self.error("Duplicate or Invalid Entry");
+          }
+          self.nameToAdd("");
+        };
+
+       
+        self.edit = function (Employee) {
+          self.Employee(Employee);
+        };
+
+       
+        self.remove = function (Employee) {
+          self.Employees.remove(Employee);
+        };
+
+        self.cancel = function () {
+          self.Employee(null);
+        };
+        self.update = function () {
+          var l_employee = self.Employee();
+          self.Employees.remove(self.Employee());
+          self.Employees.push(l_employee);
+        };
+      }
+      ko.applyBindings(new PayrollViewModel()); 
+      </script>
+      </body>
+      </html>

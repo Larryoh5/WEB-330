@@ -1,0 +1,114 @@
+<!--============================================
+; Title: Exercise 8.2- CR Operations
+; Author: Professor Krasso
+; Date: 27 Feb 2021
+; Modified by: Larry Ohaka
+;===========================================-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta  name="viewport" content="width=device-width"/>
+    <title>CR Operations</title>
+    <!-- Stylesheet - Bootstrap -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    
+  </head>
+  <body>
+    <script src="../knockout-3.5.1.js"></script>
+      <!--Menu-->
+      <nav>
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+        </ul>
+      </nav>
+      <!--CR Example-->
+
+      <div role="main" class="container">
+        <br/><br/>
+        <h2>CR Example</h2>
+        <br/>
+        <div class="row" data-bind="if: error">
+        <div class="col-sm-12">
+        <div class="alert alert-danger" role="alert">
+        <strong>Warning!</strong> <span data-bind="text: error()"></span>
+        </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-6">
+        <div class="card card-inverse" style="background-color: #333; border-color:
+       #333; color: white;">
+        <div class="card-block p-3">
+        <h3 class="card-title">Name List</h3>
+        <div class="card-text">
+        <div class="form-group row">
+        <label for="txtFruit" class="col-2 col-form-label">Name: </label>
+        <div class="col-6">
+        <input type="text" data-bind="value: namesToAdd, valueUpdate:
+       'afterkeydown'"
+        class="form-control" id="txtEmployee"/>
+        </div>
+        <div class="col-4">
+        <a href="#" data-bind="click: add" class="btn btnprimary" style="color:floralwhite">Add</a>
+        </div>
+        </div>
+        <div class="form-group">
+        <label for="txtEmployee">Shopping Cart: </label>
+        <select size="10" class="form-control" data-bind="options: list"
+        id="txtEmployee"></select>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+       </div>
+<!--Javascript-->
+      <script > 
+      //Employee view model
+      function EmployeeViewModel() {
+
+ this.namesToAdd = ko.observable("");
+
+ this.list = ko.observableArray([
+     "Dan Shrem", 
+     "Ari Tatem", 
+     "Cory Tellum"
+    ]);
+
+ this.error = ko.observable("");
+
+ this.add = function () {
+     
+    if (
+            this.namesToAdd() !== "" &&
+            this.list.indexOf(this.namesToAdd()) < 0
+          ) {
+            this.error("");
+            this.list.push(this.namesToAdd());
+          }
+
+ else {
+ this.error("Duplicate or Invalid Entry.");
+ }
+ this.namesToAdd("");
+ };
+ }
+ ko.applyBindings(new EmployeeViewModel());
+
+    </script>
+    </body>
+    </html>
