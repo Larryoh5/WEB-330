@@ -1,0 +1,100 @@
+<!--============================================
+; Title: Assignment 9.2 - Hello MVC
+; Author: Professor Krasso
+; Date: 7 March 2021
+; Modified by: Larry Ohaka
+;===========================================-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello MVC</title>
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div role="main" class="container">
+      <br />
+      <br />
+      <h1>Hello MVC Example 2</h1>
+      <p class="lead">Models and Collections...</p>
+
+      <div class="row">
+        <div class="col-sm-9">
+          <table class="table table-dark table-striped table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Salary</th>
+              </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+<!--Script-->
+    <script>
+  
+      function Employee(id, name, salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+      }
+
+  
+      var EmployeeModel = Backbone.Model.extend({
+        defaults: {
+          id: "",
+          name: "",
+          salary: 0,
+        },
+      });
+
+  
+      var EmployeeCollection = Backbone.Collection.extend({
+        model: EmployeeModel,
+      });
+
+      // Employee Collection (5 employee records, use your own values)
+      var Employees = new EmployeeCollection();
+      Employees.add(new Employee("1", "Georgina", "$100,00"));
+      Employees.add(new Employee("2", "Mark", "$50,000"));
+      Employees.add(new Employee("3", "Denise", "$78,00"));
+      Employees.add(new Employee("4", "Niecy", "$130,00"));
+      Employees.add(new Employee("5", "Cory", "$88,500"));
+
+    
+      Employees.each(function (employee) {
+        $("#table-body").append(
+          "<tr>" +
+            "<td>" +
+            employee.get("id") +
+            "</td>" +
+            "<td>" +
+            employee.get("name") +
+            "</td>" +
+            "<td>" +
+            employee.get("salary") +
+            "</td>" +
+            "</tr>"
+        );
+      });
+    </script>
+  </body>
+</html>
